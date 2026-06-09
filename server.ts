@@ -527,4 +527,10 @@ async function startServer() {
   });
 }
 
-startServer();
+// Export app for Vercel serverless usage
+export { app };
+
+// Only start the server when NOT running on Vercel
+if (!process.env.VERCEL) {
+  startServer();
+}
